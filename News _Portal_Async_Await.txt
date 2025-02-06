@@ -1,0 +1,4 @@
+So, Async_await function normally make the javaScript function
+wait a little nit until it's ready to give the output. We use it
+when we know that the function will take a little bit time to execute,
+so that until it executes the other operations can fun accordingly.
