@@ -18,3 +18,11 @@ for(const p of p_tags )
         'cursor-pointer');
     }
 
+
+    const dropButton = document.getElementById('drop-button');
+    const dropMenu = document.getElementById('drop-menu');
+
+    dropButton.addEventListener('click', () => {
+
+        dropMenu.classList.toggle('hidden');
+    });

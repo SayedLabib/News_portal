@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News <Portal></Portal></title>
+    <title>News portal</title>
 
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -57,9 +57,98 @@
 
       </section> 
 
+      <!-- Search option -->
+      <section class="mt-8">
+          
+         
+         <div class="flex justify-center ">
+                 
+            <label class="input input-bordered flex items-center gap-2 w-[700px] h-14  ">
+            
+               <svg
+               xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 16 16"
+               fill="currentColor"
+               class="h-4 w-4 opacity-70">
+               <path
+                 fill-rule="evenodd"
+                 d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                 clip-rule="evenodd" />
+             </svg>
+               
+               <input type="text" class="grow" placeholder="Search here" />
+          
+               <button class="btn btn-succes h-14 w-24 bg-slate-300 text-[#5D5FEF] -mr-[18px]">search</button> 
+             
+             </label>
+              
+
+         </div>
+         
+      </section>
+
   </header>
 
-  <main>
+  
+  <main class="mt-10 container mx-auto">
+
+   <!-- Drop Down Section and Trending News buttons added -->
+   
+   <section>
+
+      <div class="flex justify-between">
+                
+         <!-- right section -->
+         
+         <div class=" flex items-center gap-4 font-poppins  ">
+           
+            <p class="text-sm font-semibold">Sort by view</p>
+                  
+            
+            <!-- Drop Menu Section -->
+                
+              <div class="relative flex text-left ">
+   
+                <button  id="drop-button" class=" flex items-center gap-2 px-4 py-2 text-gray-700 bg-white border rounded-md shadow-sm hover:bg-gray-50 focus:outline-none">Default
+   
+                  <svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                     <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                   </svg>
+   
+   
+   
+                </button>
+                 
+                <div id="drop-menu" class="hidden absolute left-0 mt-12 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
+   
+                  <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Entertainment</a>
+                  <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sports</a>
+                  <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Political</a>
+   
+                </div>
+    
+   
+              </div>
+         
+         </div>
+   
+           <!-- left section  -->
+   
+       <div class="flex items-center gap-4">
+              
+            <button class="btn btn-active bg-[#5D5FEF] text-white">Today's Pick</button>
+            
+            <button class="btn btn-active bg-slate-200 ring-1 ring-[#5D5FEF] text-[#5D5FEF]">Trending</button>
+   
+        </div>
+   
+    
+      </div>
+
+   </section>
+   
+  
+
 
   </main>
  
