@@ -18,30 +18,34 @@ const loadCategory = async() =>
 
             // News Header adding CSS properties
 
-                    pTags.innerText = `${item.category_name}`;
+            pTags.innerText = `${item.category_name}`;
 
-                    pTags.classList.add
-                    ('border-b-2', 
-                    'border-transparent',
-                    'hover:border-b-2',
-                    'hover:border-b-[#5D5FEF]',
-                    'transition',
-                    'duration-200',
-                    'cursor-pointer');
+            pTags.classList.add
+             ('border-b-2', 
+             'border-transparent',
+             'hover:border-b-2',
+             'hover:border-b-[#5D5FEF]',
+             'transition',
+             'duration-200',
+             'cursor-pointer');
              
             
-           newsHeader.appendChild(pTags);
+           pTags.addEventListener('click',()=>{
+
+               loadNews(item.category_id);
+               
+           })
+           
+           
+        newsHeader.appendChild(pTags);
 
         });
     }
 
-loadCategory();
 
-
-
-const loadNews = async() =>
+const loadNews = async(category_id) =>
     {
-        const res = await fetch('https://openapi.programming-hero.com/api/news/category/01');
+        const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${category_id}`);
         const data = await res.json();
 
         console.log(data.data);
@@ -49,6 +53,8 @@ const loadNews = async() =>
          
         const newsContainer = document.getElementById('news-container');
         
+        newsContainer.innerHTML = ' ';
+
         data.data.forEach((item) => {
 
         //   console.log(item);
@@ -130,7 +136,11 @@ const loadNews = async() =>
         
     };
 
-loadNews();
+
+
+loadCategory();
+
+loadNews('01');
 
 
 
