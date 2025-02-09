@@ -60,7 +60,7 @@ const loadNews = async() =>
 
             
             <img class="mt-4 rounded-md ml-5 h-[260px]"
-            src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+            src="${item.thumbnail_url}"
             alt="Movie" />    
    
             <div class="card-body">
@@ -75,7 +75,7 @@ const loadNews = async() =>
             
             
             <div class="mt-5">
-               <p class="font-roboto font-normal text-[#949494] text-[14px] ">${item.details.slice(0,400)}..........</p>
+               <p class="font-roboto font-normal text-[#949494] text-[14px] ">${item.details.slice(0,300)}..........</p>
          
              
    
@@ -84,11 +84,11 @@ const loadNews = async() =>
             <div class="mt-10 flex justify-between items-center">
               
                  <div class="flex jsutify-around items-center gap-2">
-                     <img src="images/Rectangle 19.png" alt="">
+                     <img class="w-10 h-10 rounded-full" src="${item.author.img}" alt="">
                      
                     <div class="grid grid-cols-1 text-[14px] text-[#949494] font-normal">
-                     <p>Jane Cooper</p>
-                     <p>Jan 10, 2022</p>
+                     <p>${item.author.name}</p>
+                     <p>${item.author.published_date}</p>
                     </div>
    
                  </div>
@@ -96,7 +96,7 @@ const loadNews = async() =>
                  <div class="text-[14px] text-[#949494] font-normal flex justify-around items-center gap-2">
                   
                   <img src="images/icons8-eye-48.png" alt="">
-                  <p>1.5M</p>
+                  <p>${item.total_view}</p>
                  </div>
                  
    
