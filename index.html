@@ -45,15 +45,6 @@
 
       <section id="News_Header" class="flex flex-row justify-around font-poppins mt-8">
  
-         <!-- <p>Home</p>
-         <p>Breaking news</p>
-         <p>Regular news</p>
-         <p>International news</p>
-         <p>Sports</p>
-         <p>Entertainment</p>
-         <p>Culture</p>
-         <p>Arts</p>
-         <p>All News</p> -->
 
       </section> 
 
@@ -76,9 +67,9 @@
                  clip-rule="evenodd" />
              </svg>
                
-               <input type="text" class="grow" placeholder="Search here" />
+               <input id="search-field" type="text" class="grow" placeholder="Search here" />
           
-               <button class="btn btn-succes h-14 w-24 bg-slate-300 text-[#5D5FEF] -mr-[18px]">search</button> 
+               <button onclick="searchButton()" class="btn btn-succes h-14 w-24 bg-slate-300 text-[#5D5FEF] -mr-[18px]">search</button> 
              
              </label>
               
@@ -121,10 +112,7 @@
                  
                 <div id="drop-menu" class="hidden absolute left-0 mt-12 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-50">
    
-                  <!-- <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Entertainment</a>
-                  <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sports</a>
-                  <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Political</a> -->
-   
+               
                 </div>
     
    
@@ -143,6 +131,15 @@
         </div>
    
     
+      </div>
+
+
+      <!-- Loading Spinner -->
+
+      <div id="Spinner" class="mt-16 text-center hidden">
+           
+         <span class="loading loading-bars loading-lg"></span>
+
       </div>
 
    </section>

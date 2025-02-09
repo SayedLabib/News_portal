@@ -85,6 +85,9 @@ const loadCategory = async() =>
 
 const loadNews = async(category_id ='01') =>
     {
+        
+        document.getElementById('Spinner').classList.remove('hidden');
+
         const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${category_id}`);
         const data = await res.json();
 
@@ -98,6 +101,7 @@ const loadNews = async(category_id ='01') =>
         data.data.forEach((item) => {
 
         //   console.log(item);
+        document.getElementById('Spinner').classList.add('hidden');
          const div = document.createElement('div');  
          
          div.innerHTML = 
@@ -171,12 +175,43 @@ const loadNews = async(category_id ='01') =>
          
          `
          newsContainer.appendChild(div);  
-
+        
         })
         
+
     };
 
 
+const searchButton = () => {
+
+     const searchFiled = document.getElementById('search-field').value;
+    
+      
+     if(searchFiled)
+        {
+           loadNews(searchFiled);
+        }
+     else
+     {
+        alert('Please enter a valid category id');
+     }
+
+    }
+
+
+
+  
+//       const spinner = document.getElementById('Spinner');
+    
+//       if(isLoading) 
+//         {
+//            spinner.classList.remove('hidden');
+//         }
+//       else
+//       {
+//          spinner.classList.add('hidden');
+//       }    
+// };
 
 loadCategory();
 
@@ -185,20 +220,19 @@ loadNews();
 
 
 
+const dropButton = document.getElementById('drop-button');
+const dropMenu = document.getElementById('drop-menu');
 
-    const dropButton = document.getElementById('drop-button');
-    const dropMenu = document.getElementById('drop-menu');
+dropButton.addEventListener('click', () => {
 
-    dropButton.addEventListener('click', () => {
+    dropMenu.classList.toggle('hidden');
+});
 
-        dropMenu.classList.toggle('hidden');
-    });
-
-   document.addEventListener('click', (event) => {
+document.addEventListener('click', (event) => {
        
-    if(!dropMenu.contains(event.target) && !dropButton.contains(event.target))
-        {
-           dropMenu.classList.add('hidden');
-        }
+if(!dropMenu.contains(event.target) && !dropButton.contains(event.target))
+    {
+        dropMenu.classList.add('hidden');
+    }
 
-   });
+});
