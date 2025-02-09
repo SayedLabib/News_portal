@@ -98,10 +98,24 @@ const loadNews = async(category_id ='01') =>
         
         newsContainer.innerHTML = ' ';
 
+        const notAvailable = document.getElementById('Not-available');
+
+        if(data.data.length === 0)
+            {
+               notAvailable.classList.remove('hidden');
+               document.getElementById("Spinner").classList.add("hidden");
+            }
+        else
+        {
+             notAvailable.classList.add('hidden');
+             
+        }    
+
         data.data.forEach((item) => {
 
         //   console.log(item);
         document.getElementById('Spinner').classList.add('hidden');
+
          const div = document.createElement('div');  
          
          div.innerHTML = 
@@ -110,22 +124,22 @@ const loadNews = async(category_id ='01') =>
 
             
             <img class="mt-4 rounded-md ml-5 h-[260px]"
-            src="${item.thumbnail_url}"
+            src="${item?.thumbnail_url}"
             alt="Movie" />    
    
             <div class="card-body">
             
             
             <div class="flex jsutify-evenly ">
-               <h2 class="card-title">${item.title.slice(0,60)}...</h2>
+               <h2 class="card-title">${item?.title?.slice(0,60)}...</h2>
             
-               <p class="font-medium font-poppins text-[18px] ml-[480px]">${item.rating.badge}<span class="ml-4" id=""><sup>${item.rating.number}</sup></span></p>
+               <p class="font-medium font-poppins text-[18px] ml-[480px]">${item?.rating?.badge}<span class="ml-4" id=""><sup>${item.rating.number}</sup></span></p>
             
             </div>
             
             
             <div class="mt-5">
-               <p class="font-roboto font-normal text-[#949494] text-[14px] ">${item.details.slice(0,300)}..........</p>
+               <p class="font-roboto font-normal text-[#949494] text-[14px] ">${item?.details?.slice(0,300)}..........</p>
          
              
    
@@ -134,11 +148,11 @@ const loadNews = async(category_id ='01') =>
             <div class="mt-10 flex justify-between items-center">
               
                  <div class="flex jsutify-around items-center gap-2">
-                     <img class="w-10 h-10 rounded-full" src="${item.author.img}" alt="">
+                     <img class="w-10 h-10 rounded-full" src="${item?.author?.img}" alt="">
                      
                     <div class="grid grid-cols-1 text-[14px] text-[#949494] font-normal">
-                     <p>${item.author.name}</p>
-                     <p>${item.author.published_date}</p>
+                     <p>${item?.author?.name}</p>
+                     <p>${item?.author?.published_date}</p>
                     </div>
    
                  </div>
@@ -146,7 +160,7 @@ const loadNews = async(category_id ='01') =>
                  <div class="text-[14px] text-[#949494] font-normal flex justify-around items-center gap-2">
                   
                   <img src="images/icons8-eye-48.png" alt="">
-                  <p>${item.total_view}</p>
+                  <p>${item?.total_view}</p>
                  </div>
                  
    
@@ -178,7 +192,9 @@ const loadNews = async(category_id ='01') =>
         
         })
         
+        // Hide loading Spinner
 
+        // loadingSpinner(false);
     };
 
 
@@ -199,7 +215,19 @@ const searchButton = () => {
     }
 
 
+// const loadingSpinner = (isLoading) => 
+//     {
+//         const spinner = document.getElementById('Spinner');
 
+//         if(isLoading)
+//             {
+//                  spinner.classList.remove('hidden');
+//             }
+//         else
+//         {
+//             spinner.classList.add('hidden');
+//         }    
+//     };
   
 //       const spinner = document.getElementById('Spinner');
     
