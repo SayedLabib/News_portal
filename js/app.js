@@ -9,6 +9,7 @@ const loadCategory = async() =>
     
         
         const newsHeader = document.getElementById('News_Header');
+        const newsContainer = document.getElementById('news-container');
         
         data.data.news_category.forEach((item)=>{
            
@@ -30,20 +31,59 @@ const loadCategory = async() =>
              'cursor-pointer');
              
             
-           pTags.addEventListener('click',()=>{
+        
+        pTags.addEventListener('click',()=>{
 
-               loadNews(item.category_id);
-               
-           })
+        const newsContainer = document.getElementById('news-container');
+
+         newsContainer.scrollIntoView({
+
+              behavior: "smooth",
+              block: "start",
+         })
+        
+         loadNews(item.category_id);
+                
+        });
+
+
+
+           const aTags = document.createElement('a');
+           aTags.innerText = `${item.category_name}`;
+           aTags.classList.add(
+               'block',
+               'px-4',
+               'py-2',
+               'text-gray-700',
+               'hover:bg-gray-100',
+           );
+
+        aTags.addEventListener('click', ()=>{
+
+            const newsContainer = document.getElementById('news-container');
+
+            newsContainer.scrollIntoView({
+   
+                 behavior: "smooth",
+                 block: "start",
+            })
+
+            loadNews(item.category_id);
+        })
+          
            
-           
+        dropMenu.appendChild(aTags);  
         newsHeader.appendChild(pTags);
+
+          
+
+
 
         });
     }
 
 
-const loadNews = async(category_id) =>
+const loadNews = async(category_id ='01') =>
     {
         const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${category_id}`);
         const data = await res.json();
@@ -140,7 +180,7 @@ const loadNews = async(category_id) =>
 
 loadCategory();
 
-loadNews('01');
+loadNews();
 
 
 
@@ -153,3 +193,12 @@ loadNews('01');
 
         dropMenu.classList.toggle('hidden');
     });
+
+   document.addEventListener('click', (event) => {
+       
+    if(!dropMenu.contains(event.target) && !dropButton.contains(event.target))
+        {
+           dropMenu.classList.add('hidden');
+        }
+
+   });
