@@ -16,7 +16,8 @@ const loadCategory = async() =>
             
             const pTags = document.createElement('p');
 
-         
+            // News Header adding CSS properties
+
                     pTags.innerText = `${item.category_name}`;
 
                     pTags.classList.add
@@ -38,8 +39,98 @@ loadCategory();
 
 
 
-// News Header adding CSS properties
+const loadNews = async() =>
+    {
+        const res = await fetch('https://openapi.programming-hero.com/api/news/category/01');
+        const data = await res.json();
 
+        console.log(data.data);
+
+         
+        const newsContainer = document.getElementById('news-container');
+        
+        data.data.forEach((item) => {
+
+        //   console.log(item);
+         const div = document.createElement('div');  
+         
+         div.innerHTML = 
+         `
+            <div class=" mt-4 card card-side bg-base-100 shadow-2xl container lg:h-[300px] mx-auto">
+
+            
+            <img class="mt-4 rounded-md ml-5 h-[260px]"
+            src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+            alt="Movie" />    
+   
+            <div class="card-body">
+            
+            
+            <div class="flex jsutify-evenly ">
+               <h2 class="card-title">${item.title.slice(0,60)}...</h2>
+            
+               <p class="font-medium font-poppins text-[18px] ml-[480px]">${item.rating.badge}<span class="ml-4" id=""><sup>${item.rating.number}</sup></span></p>
+            
+            </div>
+            
+            
+            <div class="mt-5">
+               <p class="font-roboto font-normal text-[#949494] text-[14px] ">${item.details.slice(0,400)}..........</p>
+         
+             
+   
+            </div>
+   
+            <div class="mt-10 flex justify-between items-center">
+              
+                 <div class="flex jsutify-around items-center gap-2">
+                     <img src="images/Rectangle 19.png" alt="">
+                     
+                    <div class="grid grid-cols-1 text-[14px] text-[#949494] font-normal">
+                     <p>Jane Cooper</p>
+                     <p>Jan 10, 2022</p>
+                    </div>
+   
+                 </div>
+                 
+                 <div class="text-[14px] text-[#949494] font-normal flex justify-around items-center gap-2">
+                  
+                  <img src="images/icons8-eye-48.png" alt="">
+                  <p>1.5M</p>
+                 </div>
+                 
+   
+                 <div class="rating">
+                  <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" />
+                  <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" checked="checked" />
+                  <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" />
+                  <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" />
+                  <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" />
+                </div>
+   
+               <div class="card-actions justify-end">
+            
+                  <button class="btn bg-white border-none shadow-none"><img src="images/Group.png" alt=""></button>
+               </div>
+   
+            </div>
+            
+        
+   
+         </div> 
+          
+         </div>  
+         
+         
+         
+         `
+         newsContainer.appendChild(div);  
+
+        })
+        
+    };
+
+loadNews();
 
 
 
