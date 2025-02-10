@@ -120,10 +120,10 @@ const loadNews = async(category_id ='01') =>
          
          div.innerHTML = 
          `
-            <div class=" mt-4 card card-side bg-base-100 shadow-2xl container lg:h-[300px] mx-auto">
+            <div class=" mt-4 card card-side bg-base-100 shadow-2xl container flex flex-col lg:flex-row lg:h-[300px] mx-auto">
 
             
-            <img class="mt-4 rounded-md ml-5 h-[260px]"
+            <img class="mt-4 rounded-md mx-2 lg:mx-0 lg:ml-5 h-[260px]"
             src="${item?.thumbnail_url}"
             alt="Movie" />    
    
@@ -133,7 +133,7 @@ const loadNews = async(category_id ='01') =>
             <div class="flex jsutify-evenly ">
                <h2 class="card-title">${item?.title?.slice(0,60)}...</h2>
             
-               <p class="font-medium font-poppins text-[18px] ml-[480px]">${item?.rating?.badge}<span class="ml-4" id=""><sup>${item.rating.number}</sup></span></p>
+               <p class="font-medium font-poppins text-[16px] ml-8 lg:ml-[480px]">${item?.rating?.badge}<span class="ml-4" id=""><sup>${item.rating.number}</sup></span></p>
             
             </div>
             
@@ -145,9 +145,9 @@ const loadNews = async(category_id ='01') =>
    
             </div>
    
-            <div class="mt-10 flex justify-between items-center">
+            <div class="mt-10 grid grid-cols-2 gap-x-10 lg:flex lg:flex-row lg:justify-between items-center ">
               
-                 <div class="flex jsutify-around items-center gap-2">
+                 <div class="flex justify-around items-center gap-2">
                      <img class="w-10 h-10 rounded-full" src="${item?.author?.img}" alt="">
                      
                     <div class="grid grid-cols-1 text-[14px] text-[#949494] font-normal">
@@ -157,14 +157,14 @@ const loadNews = async(category_id ='01') =>
    
                  </div>
                  
-                 <div class="text-[14px] text-[#949494] font-normal flex justify-around items-center gap-2">
+                 <div class="text-[14px] text-[#949494] font-normal flex justify-around items-center gap-2 ml-8 lg:ml-0 ">
                   
-                  <img src="images/icons8-eye-48.png" alt="">
-                  <p>${item?.total_view}</p>
+                  <img class="ml-6 lg:ml-0" src="images/icons8-eye-48.png" alt="">
+                  <p class="ml-2 lg:ml-0">${item?.total_view}</p>
                  </div>
                  
    
-                 <div class="rating">
+                 <div class="rating mt-5 lg:mt-0">
                   <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" />
                   <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" checked="checked" />
                   <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" />
@@ -172,14 +172,15 @@ const loadNews = async(category_id ='01') =>
                   <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" />
                 </div>
    
-               <div class="card-actions justify-end">
+            <div class="card-actions mt-5 lg:mt-0 justify-end">
             
-                  <button class="btn bg-white border-none shadow-none"><img src="images/Group.png" alt=""></button>
-               </div>
+                <button class="btn bg-white border-none shadow-none"><img src="images/Group.png" alt=""></button>
+            </div>
    
             </div>
             
-        
+          
+
    
          </div> 
           
